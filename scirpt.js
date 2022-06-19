@@ -1,9 +1,9 @@
-// Set some global variables so we can use them later for the scores
+// Set some global variables so we can use them later for the scores.
 
 let playerScore = 0
 let computerScore = 0
 
-// Get a random string from an array as Computer's pick
+// Get a random string from an array as Computer's pick.
 
 function computerPlay() {
     const choices = ["rock", "paper", "scissors"]
@@ -11,7 +11,7 @@ function computerPlay() {
     const computerChoice = choices[randNum]
     return computerChoice
 }
-// Play a round that returns a string after setting Conditional Statements
+// Play a round that returns a string after setting Conditional Statements.
 
 function playRound (playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "rock") {
@@ -41,21 +41,24 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "rock";
-// A for loop to play 5 rounds with also looping the computer's random choices
+// A for loop to play 5 rounds with comp and player added to the loop so it returns different each round.
+
 function game() {
     for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt("Make your decision: ROCK, PAPER, SCISSORS. Choose by typing it down.").toLowerCase(); // This makes the prompt insensitive for any case
         const computerSelection = computerPlay();
         playRound(playerSelection, computerSelection)
         console.log(playRound(playerSelection, computerSelection))
     }
+
 // Return a string with the outcome of your game.
+
     if (playerScore > computerScore) {
-        return "You won, gj"
+        return "You won the game this time, good job!"
     }   else if (playerScore < computerScore) {
-        return "You lost, bg"
+        return "You lost the game this time, try again, when ready!"
     }   else {
-        return "You tied..."
+        return "You tied, try again, when ready!"
     }
 }
 
