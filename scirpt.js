@@ -1,4 +1,4 @@
-// Set some global variables so we can use them later for the scores.
+// Set some global variables so we can use them later.
 
 let playerScore = 0;
 let computerScore = 0;
@@ -21,7 +21,7 @@ function computerPlay() {
     return computerChoice
 }
 
-// Play a round that returns a string after setting Conditional Statements.
+// Play a round and display it's outcome with DOM.
 
 function playRound (playerSelection, computerSelection) {
     console.log(playerScore, computerScore);
@@ -68,7 +68,9 @@ function playRound (playerSelection, computerSelection) {
         p.innerText = "You lost, ROCK beats SCISSORS!"
         results.appendChild(p);
     }   
-    
+
+    // Display scores.
+
     playerScores.innerText = 'Your score: ' + playerScore;
     gameContainer.appendChild(playerScores);
 
@@ -80,7 +82,7 @@ function playRound (playerSelection, computerSelection) {
 
 
 
-// When clicking a button it gives the playerSelection the same value as the button while also returns a cumputerChoice
+// Eventlistener to call a round with player and computer + call winner.
 
 rockButton.addEventListener('click', () => {
     const computerSelection = computerPlay();
@@ -109,20 +111,24 @@ scissorsButton.addEventListener('click', () => {
     winnerAnnouncement(playerScore, computerScore);
 })
 
+// Function to call the winner and reset scores with conditional.
+
 function winnerAnnouncement (playerScore, computerScore) {
 
     if (playerScore === 5) {
         const winnerText = document.createElement('h1');
-        winnerText.textContent = 'You won 5 rounds';
-        gameContainer.appendChild(winnerText);
+        winnerText.textContent = 'You won the game';
+        results.appendChild(winnerText);
         reloadGame();
     } else if (computerScore === 5) {
         const winnerText = document.createElement('h1');
-        winnerText.textContent = 'Computer won 5 rounds';
-        gameContainer.appendChild(winnerText);
+        winnerText.textContent = 'Computer won the game';
+        results.appendChild(winnerText);
         reloadGame();
     }
 }
+
+// Function to reset scores to be used.
 
 function reloadGame () {
     playerScore = 0;
