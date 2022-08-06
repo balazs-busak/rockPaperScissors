@@ -11,6 +11,7 @@ const p = document.createElement('p');
 const computerScores = document.createElement('p');
 const playerScores = document.createElement('p');
 
+
 // Get a random string from an array as Computer's pick.
 
 function computerPlay() {
@@ -77,6 +78,8 @@ function playRound (playerSelection, computerSelection) {
 }
 
 
+
+
 // When clicking a button it gives the playerSelection the same value as the button while also returns a cumputerChoice
 
 rockButton.addEventListener('click', () => {
@@ -85,6 +88,7 @@ rockButton.addEventListener('click', () => {
     // console.log(playerSelection)
     // console.log(computerPlay())
     playRound(playerSelection, computerSelection);
+    winnerAnnouncement(playerScore, computerScore);
 })
 
 paperButton.addEventListener('click', () => {
@@ -93,6 +97,7 @@ paperButton.addEventListener('click', () => {
     // console.log(playerSelection)
     // console.log(computerPlay())
     playRound(playerSelection, computerSelection);
+    winnerAnnouncement(playerScore, computerScore);
 })
 
 scissorsButton.addEventListener('click', () => {
@@ -101,4 +106,25 @@ scissorsButton.addEventListener('click', () => {
     // console.log(playerSelection)
     // console.log(computerPlay())
     playRound(playerSelection, computerSelection);
+    winnerAnnouncement(playerScore, computerScore);
 })
+
+function winnerAnnouncement (playerScore, computerScore) {
+
+    if (playerScore === 5) {
+        const winnerText = document.createElement('h1');
+        winnerText.textContent = 'You won 5 rounds';
+        gameContainer.appendChild(winnerText);
+        reloadGame();
+    } else if (computerScore === 5) {
+        const winnerText = document.createElement('h1');
+        winnerText.textContent = 'Computer won 5 rounds';
+        gameContainer.appendChild(winnerText);
+        reloadGame();
+    }
+}
+
+function reloadGame () {
+    playerScore = 0;
+    computerScore= 0;
+}
